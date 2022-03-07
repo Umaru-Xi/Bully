@@ -1,0 +1,21 @@
+ 
+Module: ram_memory;
+Language: Verilog;
+Function: Embedded memory as RAM for Bully;
+Interface:
+    module ram_memory
+    #(
+        parameter BUS_WIDTH = 32,
+        parameter ADDR_BASE = 0,
+        parameter MEM_SIZE = 256
+    )
+    (
+        input clk,
+        input nreset,
+        input write_en,
+        input [BUS_WIDTH - 1 : 0]addr_write,
+        input [BUS_WIDTH - 1 : 0]data_write,
+        input [BUS_WIDTH - 1 : 0]addr_read,
+        output [BUS_WIDTH - 1 : 0]data_read
+    );
+    
