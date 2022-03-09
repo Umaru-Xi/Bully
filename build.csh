@@ -25,15 +25,15 @@ end
 
 set pass = "n"
 while( "${pass}" == "n" )
-    echo "${INFO}BBT can build Bully modules with many different method, such as build / simulate / generate."
-    echo "Build method and press ENTER:"
+    echo "${INFO}BBT can build Bully modules with many different method, such as build / [simulate] / generate."
+    echo "Build method and press ENTER:(defualt: simulate)"
     set build_method = $<
     if( "${build_method}" == "build" ) then
         mkdir -p ./build/build
         iverilog ./verilog_src/${module_name}.v -o ./build/build/${module_name}.o
         echo "${INFO}Build success."
         set pass = "y"
-    else if( "${build_method}" == "simulate" ) then
+    else
         if( -f ./verilog_sim/${module_name}_sim.v ) then
             mkdir -p ./build/simulate
             iverilog ./verilog_src/${module_name}.v ./verilog_sim/${module_name}_sim.v -o ./build/simulate/${module_name}_sim.o
