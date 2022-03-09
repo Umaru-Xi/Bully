@@ -1,0 +1,26 @@
+ 
+Module: alu;
+Language: Verilog;
+Function: Arithmetic and logical unit;
+Interface:
+    module alu
+    #(
+        parameter BUS_WIDTH = 32
+    )
+    (
+        input [3:0]opcode,
+        input [BUS_WIDTH - 1 : 0]num_0,
+        input [BUS_WIDTH - 1 : 0]num_1,
+        output [BUS_WIDTH - 1 : 0]num_out,
+        output over_flag,       // when add overflow or sub underflow will be set;
+        output zero_flag,       // when num_out is zero will be set;
+        output greater_flag,    // when num_0 greater than num_1 will be set;
+        output equal_flag       // when num_0 equal to num_1 will be set;
+    );
+OPCODE:
+    NUL_CMD = 4'b0000; // num_out = 0;
+    ADD_CMD = 4'b0001; // num_out = num_0 + num_1;
+    SUB_CMD = 4'b0010; // num_out = num_0 - num_1;
+    AND_CMD = 4'b0100; // num_out = num_0 & num_1;
+    OR_CMD = 4'b1000;  // num_out = num_0 | num_1;
+    XOR_CMD = 4'b0011; // num_out = num_0 ^ num_1;

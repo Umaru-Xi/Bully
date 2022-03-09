@@ -16,6 +16,7 @@ reg [bus_width - 1 : 0]data_write = 0;
 reg [bus_width - 1 : 0]addr_read = 0;
 
 wire [bus_width - 1 : 0]data_read;
+wire ready;
 
 parameter clk_cnt_max = ((1000000000 / freq) >> 1);
 
@@ -56,7 +57,8 @@ RAM_MEMORY0(
     .addr_write(addr_write),
     .data_write(data_write),
     .addr_read(addr_read),
-    .data_read(data_read)
+    .data_read(data_read),
+    .ready(ready)
 );
 
 endmodule
