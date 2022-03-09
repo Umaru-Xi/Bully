@@ -16,6 +16,6 @@ Interface:
         input [BUS_WIDTH - 1 : 0]addr_write,
         input [BUS_WIDTH - 1 : 0]data_write,
         input [BUS_WIDTH - 1 : 0]addr_read,
-        output [BUS_WIDTH - 1 : 0]data_read
+        output [BUS_WIDTH - 1 : 0]data_read,
+        output ready
     );
-    
