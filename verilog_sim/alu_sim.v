@@ -12,8 +12,8 @@ parameter OR_CMD = 4'b1000;
 parameter XOR_CMD = 4'b0011;
 
 reg [3:0]opcode = NUL_CMD;
-reg [bus_width - 1 : 0]num_0 = 0;
-reg [bus_width - 1 : 0]num_1 = 0;
+reg [bus_width - 1 : 0]num_0 = 'd0;
+reg [bus_width - 1 : 0]num_1 = 'd0;
 wire [bus_width - 1 : 0]num_out;
 wire over_flag;
 wire zero_flag;

@@ -3,6 +3,7 @@
 module cmd_point_sim();
 
 parameter bus_width = 32;
+parameter cmd_point_base = 0;
 parameter freq = 1000000;
 
 parameter NUL_CMD = 3'b000;
@@ -13,7 +14,7 @@ parameter SJB_CMD = 3'b100;
 reg clk = 1'b0;
 reg nreset = 1'b1;
 reg [2:0]opcode = NUL_CMD;
-reg [bus_width - 1 : 0]addr_to = 0;
+reg [bus_width - 1 : 0]addr_to = 'd0;
 
 wire [bus_width - 1 : 0]addr_point;
 wire ready;
@@ -45,7 +46,8 @@ end
 always #clk_cnt_max clk <= ~clk;
 
 cmd_point #(
-    .BUS_WIDTH(bus_width)
+    .BUS_WIDTH(bus_width),
+    .CMD_POINT_BASE(cmd_point_base)
 )
 CMD_POINT0(
     .clk(clk),

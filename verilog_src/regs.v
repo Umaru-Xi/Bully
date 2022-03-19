@@ -15,14 +15,14 @@ module regs
 );
 
 reg [BUS_WIDTH - 1 : 0]regs_group[REGS_NUM - 1 : 0];
-reg [BUS_WIDTH - 1 : 0]data_read_buffer = 0;
+reg [BUS_WIDTH - 1 : 0]data_read_buffer = 'd0;
 reg ready_buffer = 1'b0;
 
 assign ready = ready_buffer;
 
 assign addr_write_internal = addr_write;
 
-assign data_read = (addr_read < REGS_NUM)? regs_group[addr_read] : 0;
+assign data_read = (addr_read < REGS_NUM)? regs_group[addr_read] : 'd0;
 
 integer index = 0;
 initial
@@ -30,7 +30,7 @@ begin
     ready_buffer <= 1'b0;
     for(index = 0; index < REGS_NUM; index = index + 1)
     begin
-        regs_group[index] <= 0;
+        regs_group[index] <= 'd0;
     end
 end
 
@@ -41,7 +41,7 @@ begin
         ready_buffer <= 1'b0;
         for(index = 0; index < REGS_NUM; index = index + 1)
         begin
-            regs_group[index] <= 0;
+            regs_group[index] <= 'd0;
         end
     end
     else

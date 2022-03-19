@@ -8,7 +8,7 @@ parameter freq = 1000000;
 reg clk = 1'b0;
 reg nreset = 1'b1;
 reg set = 1'b0;
-reg [bus_width - 1 : 0]protected_addr_in = 0;
+reg [bus_width - 1 : 0]protected_addr_in = 'd0;
 wire protected_flag;
 wire [bus_width - 1 : 0]protected_addr;
 
@@ -22,17 +22,17 @@ begin
     set = 1'b0;
     #(1 * clk_cnt_max * 2ns) nreset = 1'b0;
     #(1 * clk_cnt_max * 2ns) nreset = 1'b1;
-    #(3 * clk_cnt_max * 2ns) protected_addr_in = 3;
+    #(3 * clk_cnt_max * 2ns) protected_addr_in = 'd3;
     #(1 * clk_cnt_max * 2ns) set = 1'b1;
     #(1 * clk_cnt_max * 2ns) set = 1'b0;
-    #(3 * clk_cnt_max * 2ns) protected_addr_in = 2;
+    #(3 * clk_cnt_max * 2ns) protected_addr_in = 'd2;
     #(1 * clk_cnt_max * 2ns) set = 1'b1;
     #(1 * clk_cnt_max * 2ns) set = 1'b0;
     #(1 * clk_cnt_max * 2ns) set = 1'b1;
     #(1 * clk_cnt_max * 2ns) set = 1'b0;
     #(1 * clk_cnt_max * 2ns) nreset = 1'b0;
     #(1 * clk_cnt_max * 2ns) nreset = 1'b1;
-    #(3 * clk_cnt_max * 2ns) protected_addr_in = 1;
+    #(3 * clk_cnt_max * 2ns) protected_addr_in = 'd1;
     #(5 * clk_cnt_max * 2ns) $finish;
 end
 

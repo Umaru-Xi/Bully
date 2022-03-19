@@ -38,7 +38,7 @@ assign num_out =
     (opcode == SUB_CMD)? sub_out[BUS_WIDTH - 1 : 0] : (
     (opcode == AND_CMD)? and_out : (
     (opcode == OR_CMD)? or_out : (
-    (opcode == XOR_CMD)? xor_out : 0
+    (opcode == XOR_CMD)? xor_out : 'd0
     ))));
 assign over_flag = 
     (opcode == ADD_CMD)? add_out[BUS_WIDTH] : (

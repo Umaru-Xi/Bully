@@ -9,9 +9,9 @@ parameter freq = 1000000;
 reg clk = 1'b0;
 reg nreset = 1'b1;
 
-reg [bus_width - 1 : 0]addr_write = 0;
-reg [bus_width - 1 : 0]data_write = 0;
-reg [bus_width - 1 : 0]addr_read = 0;
+reg [bus_width - 1 : 0]addr_write = 'd0;
+reg [bus_width - 1 : 0]data_write = 'd0;
+reg [bus_width - 1 : 0]addr_read = 'd0;
 
 wire [bus_width - 1 : 0]data_read;
 wire ready;
@@ -25,15 +25,15 @@ begin
     nreset = 1'b1;
     #(5 * clk_cnt_max * 2ns)  nreset = 1'b0;
     #(5 * clk_cnt_max * 2ns)  nreset = 1'b1;
-    #(5 * clk_cnt_max * 2ns)  addr_read = 0;
+    #(5 * clk_cnt_max * 2ns)  addr_read = 'd0;
     #(5 * clk_cnt_max * 2ns)  
-        addr_write = 1;
-        data_write = 2;
+        addr_write = 'd1;
+        data_write = 'd2;
     #(5 * clk_cnt_max * 2ns)  addr_read = addr_write;
     #(5 * clk_cnt_max * 2ns)  
-        data_write = 1;
-        addr_write = regs_num - 1;
-    #(5 * clk_cnt_max * 2ns)  addr_read = regs_num - 1;
+        data_write = 'd1;
+        addr_write = regs_num - 1'b1;
+    #(5 * clk_cnt_max * 2ns)  addr_read = regs_num - 1'b1;
     #(5 * clk_cnt_max * 2ns)  addr_read = regs_num;
     #(5 * clk_cnt_max * 2ns) $finish;
 end

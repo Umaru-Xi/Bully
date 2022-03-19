@@ -25,7 +25,7 @@ wire [BUS_WIDTH - 1 : 0]addr_read_internal;
 assign ready = ready_buffer;
 assign addr_write_internal = addr_write - ADDR_BASE;
 assign addr_read_internal = addr_read - ADDR_BASE;
-assign data_read = (addr_read_internal < MEM_SIZE)? ram_memory_reg[addr_read_internal] : 0;
+assign data_read = (addr_read_internal < MEM_SIZE)? ram_memory_reg[addr_read_internal] : 'd0;
 
 integer index = 0;
 initial
@@ -33,7 +33,7 @@ begin
     ready_buffer <= 1'b0;
     for(index = 0; index < MEM_SIZE; index = index + 1)
     begin
-        ram_memory_reg[index] <= 0;
+        ram_memory_reg[index] <= 'd0;
     end
 end
 
@@ -44,7 +44,7 @@ begin
         ready_buffer <= 1'b0;
         for(index = 0; index < MEM_SIZE; index = index + 1)
         begin
-            ram_memory_reg[index] <= 0;
+            ram_memory_reg[index] <= 'd0;
         end
     end
     else

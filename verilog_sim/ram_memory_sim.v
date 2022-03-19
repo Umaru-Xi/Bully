@@ -11,9 +11,9 @@ reg clk = 1'b0;
 reg nreset = 1'b1;
 reg write_en = 1'b0;
 
-reg [bus_width - 1 : 0]addr_write = 0;
-reg [bus_width - 1 : 0]data_write = 0;
-reg [bus_width - 1 : 0]addr_read = 0;
+reg [bus_width - 1 : 0]addr_write = 'd0;
+reg [bus_width - 1 : 0]data_write = 'd0;
+reg [bus_width - 1 : 0]addr_read = 'd0;
 
 wire [bus_width - 1 : 0]data_read;
 wire ready;

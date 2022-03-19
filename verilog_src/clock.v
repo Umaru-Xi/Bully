@@ -13,7 +13,7 @@ module clock
 parameter CNT_MAX = ((FREQ_IN / FREQ_OUT) >> 1);
 
 reg clk_out_inner = 1'b0;
-reg [BUS_WIDTH - 1 : 0]clk_in_cnt = 0;
+reg [BUS_WIDTH - 1 : 0]clk_in_cnt = 'd0;
 
 assign clk_out = clk_out_inner;
 
@@ -26,7 +26,7 @@ begin
     end
     else
     begin
-        clk_in_cnt <= 0;
+        clk_in_cnt <= 'd0;
         clk_out_inner <= ~clk_out_inner;
     end
 end

@@ -1,7 +1,8 @@
 
 module cmd_point
 #(
-    parameter BUS_WIDTH = 32
+    parameter BUS_WIDTH = 32,
+    parameter CMD_POINT_BASE = 0
 )
 (
     input clk,
@@ -17,10 +18,10 @@ parameter JMP_CMD = 3'b001;
 parameter SJF_CMD = 3'b010;
 parameter SJB_CMD = 3'b100;
 
-reg [BUS_WIDTH - 1 : 0]addr_point_internal = 0;
+reg [BUS_WIDTH - 1 : 0]addr_point_internal = 'd0;
 reg ready_buffer = 1'b0;
 
-assign addr_point = addr_point_internal;
+assign addr_point = addr_point_internal + CMD_POINT_BASE;
 assign ready = ready_buffer;
 
 always @(posedge clk or negedge nreset)
@@ -28,7 +29,7 @@ begin
     if(!nreset)
     begin
         ready_buffer <= 1'b0;
-        addr_point_internal <= 0;
+        addr_point_internal <= 'd0;
     end
     else
     begin

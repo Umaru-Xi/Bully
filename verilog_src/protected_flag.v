@@ -15,7 +15,7 @@ module protected_flag
 reg protected_flag_inner_sync = 1'b0;
 reg protected_flag_inner_asyn = 1'b0;
 
-reg [BUS_WIDTH - 1 : 0]protected_addr_inner = 0;
+reg [BUS_WIDTH - 1 : 0]protected_addr_inner = 'd0;
 
 assign protected_flag = protected_flag_inner_sync | protected_flag_inner_asyn;
 assign protected_addr = protected_addr_inner;
@@ -25,7 +25,7 @@ begin
     if(!nreset) 
     begin
         protected_flag_inner_asyn <= 1'b0;
-        protected_addr_inner <= 0;
+        protected_addr_inner <= 'd0;
     end
     else
     begin
